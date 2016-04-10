@@ -1,0 +1,15 @@
+[user]
+	name = chasmodo
+	email = bosko.trkulja@gmail.com
+[color]
+	ui = auto
+[review "gerrit.omnirom.org"]
+	username = chasmodo
+[review "gerrit.dirtyunicorns.com"]
+	username = chasmodo
+[push]
+	default = matching
+[rerere]
+	enabled = false
+[http]
+	cookiefile = /home/chasmodo/.gitcookies
