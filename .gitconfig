@@ -13,3 +13,5 @@
 	enabled = false
 [http]
 	cookiefile = /home/chasmodo/.gitcookies
+[core]
+	editor = nano -w

@@ -25,11 +25,6 @@ alias updagrade="sudo apt-get update && sudo apt-get upgrade"
 alias autoremove="sudo apt-get autoremove"
 alias clean="sudo apt-get autoclean"
 
-export PATH=${PATH}:~/sdk/sdk/platform-tools
-export PATH=${PATH}:~/bin
-
-export USE_CCACHE=1
-
 source ~/.bash-colors
 
 # git status slightly adapted from https://coderwall.com/p/pn8f0g
