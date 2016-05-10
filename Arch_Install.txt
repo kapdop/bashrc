@@ -1,0 +1,69 @@
+ping www.google.com
+
+#To see network info
+ip link
+
+#Note your ethernet somehere (enp3s0)
+
+cfdisk /dev/sda
+
+mkfs.ext4 /dev/sda1 (later repeat for sda2 and sda3)
+
+mkswap /dev/sda2 
+swapon /dev/sda2
+
+mount /dev/sda1 /mnt
+mkdir -p /mnt/home
+mount /dev/sda3 /mnt/home
+lsblk (just to check if everything's ok)
+
+pacstrap -i /mnt base base-devel
+
+genfstab -U -p /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab (just to check)
+arch-chroot /mnt /bin/bash  (chrooting into installation, it should be [root@archiso /] now before the prompt)
+nano /etc/locale.gen
+#uncomment en_US.UTF-8 UTF-8
+locale-gen
+export LANG=en_US.UTF-8
+ls -l /usr/share/zoneinfo (just to see the timezones, the following command will set it to Belgrade)
+ln -sf /usr/share/zoneinfo/Europe/Belgrade /etc/localtime
+hwclock --systohc --utc
+echo mynameislegion > /etc/hostname
+nano /etc/hosts  (append mynameislegion after 'localhost', no slashes, just space then my hostname)
+systemctl enable dhcpcd@enp3s0.service (enp3s0 is my ethernet identification)
+
+#For WiFi connectivity (laptop)
+pacman -S iw wpa_supplicant dialog wpa_actiond
+systemctl enable netctl-auto@<interfacename>.service
+#End of WiFi
+
+passwd
+
+pacman -S grub os-prober
+grub-install --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+reboot
+
+useradd -m -G wheel -s /bin/bash chasmodo
+passwd chasmodo
+nano /etc/sudoers
+
+#Find User Privilege specification, it already has the following line
+#root ALL=(ALL) ALL
+#Enter 
+#chasmodo ALL=(ALL) ALL beneath it, save, exit
+#Now type exit (to exit root), then type in the username and password at the prompt
+
+sudo pacman -S pulseaudio pulseaudio-alsa
+sudo pacman -S xorg
+sudo pacman -S xorg-xinit
+sudo pacman -S xterm xorg-twm
+sudo pacman -S cinnamon
+nano ~/.xinitrc
+#Enter 
+#exec cinnamon-session
+#save, quit
+
+startx
