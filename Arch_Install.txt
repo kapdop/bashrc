@@ -51,9 +51,9 @@ passwd chasmodo
 nano /etc/sudoers
 
 #Find User Privilege specification, it already has the following line
-#root ALL=(ALL) ALL
+root ALL=(ALL) ALL
 #Enter 
-#chasmodo ALL=(ALL) ALL beneath it, save, exit
+chasmodo ALL=(ALL) ALL beneath it, save, exit
 #Now type exit (to exit root), then type in the username and password at the prompt
 
 sudo pacman -S pulseaudio pulseaudio-alsa
@@ -63,7 +63,7 @@ sudo pacman -S xterm xorg-twm
 sudo pacman -S cinnamon
 nano ~/.xinitrc
 #Enter 
-#exec cinnamon-session
+exec cinnamon-session
 #save, quit
 
 startx
