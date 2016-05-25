@@ -1,4 +1,3 @@
-alias apt-get='apt-fast'
 alias md='mkdir'
 alias rm='rm -rf'
 alias head='grep -r "<<<<<<< HEAD"'
@@ -16,14 +15,10 @@ alias stat='git status'
 alias rvt='git revert'
 alias rmt='git remote -v'
 alias clob='make clobber'
-alias update="sudo apt-get update"
-alias upgrade="sudo apt-get upgrade"
-alias install="sudo apt-get install"
-alias remove="sudo apt-get remove"
-alias purge="sudo apt-get purge"
-alias updagrade="sudo apt-get update && sudo apt-get upgrade"
-alias autoremove="sudo apt-get autoremove"
-alias clean="sudo apt-get autoclean"
+alias update='sudo pacman -Syyu'
+alias install='sudo pacman -S'
+alias remove='sudo pacman -Rs'
+alias rmorphans='sudo pacman -Rns $(pacman -Qqdt)'
 
 source ~/.bash-colors
 
