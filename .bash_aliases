@@ -15,10 +15,12 @@ alias stat='git status'
 alias rvt='git revert'
 alias rmt='git remote -v'
 alias clob='make clobber'
-alias update='sudo pacman -Syyu'
+alias update='sudo pacman -Syyu --noconfirm | lolcat'
+alias yupdate='yaourt -Syua --noconfirm | lolcat'
 alias install='sudo pacman -S'
 alias remove='sudo pacman -Rs'
-alias rmorphans='sudo pacman -Rns $(pacman -Qqdt)'
+alias rmorphans='sudo pacman -Rns $(pacman -Qtdq)'
+alias paccache='sudo paccache -r -k 2'
 
 source ~/.bash-colors
 
